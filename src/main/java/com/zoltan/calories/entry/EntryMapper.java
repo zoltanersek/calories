@@ -6,7 +6,13 @@ import org.springframework.stereotype.Component;
 public class EntryMapper {
 
     public EntryDto toEntryDto(Entry entry) {
-        return new EntryDto(entry.getId(), entry.getDate().toLocalDate(), entry.getDate().toLocalTime(), entry.getText(), entry.getCalories());
+        return EntryDto.builder()
+                .id(entry.getId())
+                .date(entry.getDate())
+                .time(entry.getTime())
+                .text(entry.getText())
+                .calories(entry.getCalories())
+                .build();
     }
 
 }

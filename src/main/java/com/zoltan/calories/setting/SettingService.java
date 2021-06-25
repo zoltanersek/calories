@@ -2,7 +2,7 @@ package com.zoltan.calories.setting;
 
 import com.zoltan.calories.NotFoundException;
 import com.zoltan.calories.user.User;
-import com.zoltan.calories.user.UserRepository;
+import com.zoltan.calories.user.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,7 +16,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class SettingService {
     private final SettingRepository settingRepository;
-    private final UserRepository userRepository;
+    private final UserService userService;
     private final SettingMapper settingMapper;
 
     public Page<SettingDto> getAllSettings(Pageable pageable) {
@@ -30,15 +30,13 @@ public class SettingService {
         if (settingRepository.getSettingByNameForCurrentUser(settingDto.getName()).isPresent()) {
             throw new ValidationException("Setting " + settingDto.getName() + " already set for user");
         }
-        User user = userRepository.getCurrentUser();
+        User user = userService.getCurrentUser();
         Setting setting = new Setting(settingDto.getName(), settingDto.getValue(), user);
         return settingMapper.toSettingDto(settingRepository.save(setting));
     }
 
-    public SettingDto getSetting(String name) {
-        return settingRepository.getSettingByNameForCurrentUser(name)
-                .map(settingMapper::toSettingDto)
-                .orElseThrow(() -> new NotFoundException("Setting " + name + " not found for user"));
+    public Optional<SettingDto> getSetting(String name) {
+        return settingRepository.getSettingByNameForCurrentUser(name).map(settingMapper::toSettingDto);
     }
 
     @Transactional

@@ -30,4 +30,8 @@ public class UserService {
         userRepository.save(user);
         return userMapper.toUserDto(user);
     }
+
+    public User getCurrentUser() {
+        return userRepository.getCurrentUser();
+    }
 }

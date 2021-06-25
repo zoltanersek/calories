@@ -1,5 +1,6 @@
 package com.zoltan.calories.setting;
 
+import com.zoltan.calories.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -29,7 +30,7 @@ public class SettingController {
 
     @GetMapping(path = "/{name}")
     public SettingDto getSetting(@PathVariable("name") @NotEmpty String name) {
-        return settingService.getSetting(name);
+        return settingService.getSetting(name).orElseThrow(() -> new NotFoundException("Setting " + name + " not found for user"));
     }
 
     @PutMapping(path = "/{name}")

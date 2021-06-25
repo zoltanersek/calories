@@ -28,7 +28,7 @@ public class EntryController {
     }
 
     @PutMapping(path = "/{id}")
-    public EntryDto updateEntry(@PathVariable("id") @NotNull @PositiveOrZero Long id, @RequestBody @Valid EntryDto entryDto) {
+    public EntryDto updateEntry(@PathVariable("id") @NotNull @PositiveOrZero Long id, @RequestBody @Valid UpdateEntryRequest entryDto) {
         return entryService.updateEntry(id, entryDto);
     }
 
