@@ -1,8 +1,6 @@
 package com.zoltan.calories.setting;
 
 import com.zoltan.calories.NotFoundException;
-import com.zoltan.calories.entry.Entry;
-import com.zoltan.calories.entry.EntrySpecification;
 import com.zoltan.calories.search.SearchParser;
 import com.zoltan.calories.user.User;
 import com.zoltan.calories.user.UserService;
@@ -24,6 +22,14 @@ public class SettingService {
     private final UserService userService;
     private final SettingMapper settingMapper;
     private final SearchParser searchParser;
+
+    public Page<SettingDto> getAllSettings(String search, Pageable pageable) {
+        Specification<Setting> specification = null;
+        if (!ObjectUtils.isEmpty(search)) {
+            specification = searchParser.parse(search, SettingSpecification::new);
+        }
+        return settingRepository.findAll(specification, pageable).map(settingMapper::toSettingDtoWithUserDto);
+    }
 
     public Page<SettingDto> getAllSettingsForUser(String search, Pageable pageable) {
         Specification<Setting> specification = (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("user"), userService.getCurrentUser());
@@ -50,6 +56,20 @@ public class SettingService {
     }
 
     @Transactional
+    public SettingDto updateSetting(Long id, SettingDto settingDto) {
+        Optional<Setting> existingSettingOptional = settingRepository.findById(id);
+        if (existingSettingOptional.isEmpty()) {
+            throw new NotFoundException("Setting " + id + " not found");
+        }
+        Setting existingSetting = existingSettingOptional.get();
+        if (!existingSetting.getName().equals(settingDto.getName())) {
+            throw new ValidationException("Name change for setting not supported");
+        }
+        existingSetting.setValue(settingDto.getValue());
+        return settingMapper.toSettingDtoWithUserDto(existingSetting);
+    }
+
+    @Transactional
     public SettingDto updateSettingForUser(String name, SettingDto settingDto) {
         Optional<Setting> existingSettingOptional = settingRepository.getSettingByNameForCurrentUser(name);
         if (existingSettingOptional.isEmpty()) {
@@ -65,5 +85,9 @@ public class SettingService {
 
     public void deleteSettingForUser(String name) {
         settingRepository.deleteByNameForCurrentUser(name);
+    }
+
+    public void deleteSetting(Long id) {
+        settingRepository.findById(id).ifPresent(settingRepository::delete);
     }
 }

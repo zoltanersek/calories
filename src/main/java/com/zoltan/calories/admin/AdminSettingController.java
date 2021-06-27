@@ -1,8 +1,7 @@
 package com.zoltan.calories.admin;
 
-import com.zoltan.calories.entry.EntryDto;
-import com.zoltan.calories.entry.EntryService;
-import com.zoltan.calories.entry.UpdateEntryRequest;
+import com.zoltan.calories.setting.SettingDto;
+import com.zoltan.calories.setting.SettingService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
@@ -18,29 +17,28 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
 @RestController
-@RequestMapping(path = "api/admin/entry")
+@RequestMapping(path = "api/admin/setting")
 @RolesAllowed("ROLE_ADMIN")
 @AllArgsConstructor
 @Log4j2
-public class AdminEntryController {
-    private final EntryService entryService;
+public class AdminSettingController {
+    private final SettingService settingService;
 
     @GetMapping
-    public Page<EntryDto> getAllEntries(@RequestParam(value = "search", required = false) String search, Pageable p) {
-        return entryService.getAllEntries(search, p);
+    public Page<SettingDto> getAllSettings(@RequestParam(value = "search", required = false) String search, Pageable p) {
+        return settingService.getAllSettings(search, p);
     }
 
     @PutMapping(path = "/{id}")
-    public EntryDto updateEntry(@PathVariable("id") @NotNull @PositiveOrZero Long id, @RequestBody @Valid UpdateEntryRequest entryDto) {
-        return entryService.updateEntry(id, entryDto);
+    public SettingDto updateSetting(@PathVariable("id") @PositiveOrZero Long id, @RequestBody @Valid SettingDto settingDto) {
+        return settingService.updateSetting(id, settingDto);
     }
 
     @DeleteMapping(path = "/{id}")
-    public void deleteEntry(@PathVariable("id") @NotNull @PositiveOrZero Long id) {
-        entryService.deleteEntry(id);
+    public void deleteSetting(@PathVariable("id") @PositiveOrZero Long id) {
+        settingService.deleteSetting(id);
     }
 }
