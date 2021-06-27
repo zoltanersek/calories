@@ -2,6 +2,7 @@ package com.zoltan.calories.entry;
 
 import com.zoltan.calories.NotFoundException;
 import com.zoltan.calories.nutritionix.NutritionixService;
+import com.zoltan.calories.search.SearchParser;
 import com.zoltan.calories.setting.SettingDto;
 import com.zoltan.calories.setting.SettingService;
 import com.zoltan.calories.setting.Settings;
@@ -10,8 +11,11 @@ import com.zoltan.calories.user.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.transaction.Transactional;
 import javax.validation.ValidationException;
 import java.time.LocalDate;
@@ -25,10 +29,15 @@ public class EntryService {
     private final EntryMapper entryMapper;
     private final SettingService settingService;
     private final NutritionixService nutritionixService;
+    private final SearchParser searchParser;
 
-    public Page<EntryDto> getAllEntries(Pageable pageable) {
-        //todo: advanced filtering
-        return entryRepository.getEntriesForCurrentUser(pageable)
+    public Page<EntryDto> getAllEntries(String search, Pageable pageable) {
+        Specification<Entry> specification = (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("user"), userService.getCurrentUser());
+        if (!ObjectUtils.isEmpty(search)) {
+            specification = specification.and(searchParser.parse(search, EntrySpecification::new));
+        }
+
+        return entryRepository.findAll(specification, pageable)
                 .map(entryMapper::toEntryDto)
                 .map(entryDto -> entryDto.withUnderBudget(isDailyTotalHigherThanTargetForDate(entryDto.getDate())));
     }
