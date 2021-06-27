@@ -15,7 +15,6 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.transaction.Transactional;
 import javax.validation.ValidationException;
 import java.time.LocalDate;
@@ -32,11 +31,20 @@ public class EntryService {
     private final SearchParser searchParser;
 
     public Page<EntryDto> getAllEntries(String search, Pageable pageable) {
+        Specification<Entry> specification = null;
+        if (!ObjectUtils.isEmpty(search)) {
+            specification = searchParser.parse(search, EntrySpecification::new);
+        }
+        return entryRepository.findAll(specification, pageable)
+                .map(entryMapper::toEntryDtoWithUserDto)
+                .map(entryDto -> entryDto.withUnderBudget(isDailyTotalHigherThanTargetForDate(entryDto.getDate())));
+    }
+
+    public Page<EntryDto> getAllEntriesForCurrentUser(String search, Pageable pageable) {
         Specification<Entry> specification = (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("user"), userService.getCurrentUser());
         if (!ObjectUtils.isEmpty(search)) {
             specification = specification.and(searchParser.parse(search, EntrySpecification::new));
         }
-
         return entryRepository.findAll(specification, pageable)
                 .map(entryMapper::toEntryDto)
                 .map(entryDto -> entryDto.withUnderBudget(isDailyTotalHigherThanTargetForDate(entryDto.getDate())));
@@ -54,22 +62,31 @@ public class EntryService {
 
     @Transactional
     public EntryDto updateEntry(Long id, UpdateEntryRequest entryDto) {
+        Optional<Entry> existingEntryOptional = entryRepository.findById(id);
+        if (existingEntryOptional.isEmpty()) {
+            throw new NotFoundException("Entry " + id + " not found");
+        }
+        Entry existingEntry = existingEntryOptional.get();
+        updateEntryFields(existingEntry, entryDto);
+        return entryMapper.toEntryDtoWithUserDto(existingEntry).withUnderBudget(isDailyTotalHigherThanTargetForDate(entryDto.getDate()));
+    }
+
+    @Transactional
+    public EntryDto updateEntryForCurrentUser(Long id, UpdateEntryRequest updateEntryRequest) {
         Optional<Entry> existingEntryOptional = entryRepository.getEntryByIdForCurrentUser(id);
         if (existingEntryOptional.isEmpty()) {
             throw new NotFoundException("Entry " + id + " not found for user");
         }
         Entry existingEntry = existingEntryOptional.get();
-        if (!existingEntry.getId().equals(entryDto.getId())) {
-            throw new ValidationException("Id change for entry not supported");
-        }
-        existingEntry.setDate(entryDto.getDate());
-        existingEntry.setTime(entryDto.getTime());
-        existingEntry.setCalories(entryDto.getCalories());
-        existingEntry.setText(entryDto.getText());
-        return entryMapper.toEntryDto(existingEntry).withUnderBudget(isDailyTotalHigherThanTargetForDate(entryDto.getDate()));
+        updateEntryFields(existingEntry, updateEntryRequest);
+        return entryMapper.toEntryDto(existingEntry).withUnderBudget(isDailyTotalHigherThanTargetForDate(updateEntryRequest.getDate()));
     }
 
     public void deleteEntry(Long id) {
+        entryRepository.findById(id).ifPresent(entryRepository::delete);
+    }
+
+    public void deleteEntryForCurrentUser(Long id) {
         entryRepository.deleteByIdForCurrentUser(id);
     }
 
@@ -83,5 +100,14 @@ public class EntryService {
                 .orElse(true);
     }
 
+    private void updateEntryFields(Entry existingEntry, UpdateEntryRequest updateEntryRequest) {
+        if (!existingEntry.getId().equals(updateEntryRequest.getId())) {
+            throw new ValidationException("Id change for entry not supported");
+        }
+        existingEntry.setDate(updateEntryRequest.getDate());
+        existingEntry.setTime(updateEntryRequest.getTime());
+        existingEntry.setCalories(updateEntryRequest.getCalories());
+        existingEntry.setText(updateEntryRequest.getText());
+    }
 
 }

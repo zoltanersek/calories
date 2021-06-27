@@ -1,6 +1,8 @@
 package com.zoltan.calories.entry;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.zoltan.calories.user.UserDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,5 +25,7 @@ public class EntryDto {
     private String text;
     private Integer calories;
     private Boolean underBudget;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private UserDto user;
 }
 
