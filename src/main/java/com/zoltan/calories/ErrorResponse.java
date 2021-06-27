@@ -1,10 +1,21 @@
 package com.zoltan.calories;
 
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
-@AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ErrorResponse {
-    private final String message;
+    private String error;
+    private List<String> errors;
+
+    public ErrorResponse(String error) {
+        this.error = error;
+    }
+
+    public ErrorResponse(List<String> errors) {
+        this.errors = errors;
+    }
 }

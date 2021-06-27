@@ -62,6 +62,9 @@ public class SettingService {
             throw new NotFoundException("Setting " + id + " not found");
         }
         Setting existingSetting = existingSettingOptional.get();
+        if (!existingSetting.getId().equals(settingDto.getId())) {
+            throw new ValidationException("Id change for setting not supported");
+        }
         if (!existingSetting.getName().equals(settingDto.getName())) {
             throw new ValidationException("Name change for setting not supported");
         }

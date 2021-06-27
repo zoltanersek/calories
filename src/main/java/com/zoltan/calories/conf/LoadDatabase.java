@@ -17,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Collections;
+import java.util.Set;
 
 @Configuration
 @Log4j2
@@ -28,7 +29,8 @@ public class LoadDatabase {
                                    SettingRepository settingRepository,
                                    PasswordEncoder passwordEncoder) {
         return args -> {
-            User user = new User("zoltan", passwordEncoder.encode("zoltan"), Collections.singleton(new Role("ROLE_ADMIN")), true);
+            User user = new User("zoltan", passwordEncoder.encode("zoltan"),
+                    Set.of(Role.ROLE_ADMIN, Role.ROLE_USER), true);
             log.info("Preloading " + userRepository.save(user));
 
             Entry entry = new Entry(LocalDate.now(), LocalTime.now(), "apple", 90, user);

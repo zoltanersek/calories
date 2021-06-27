@@ -1,18 +1,15 @@
 package com.zoltan.calories.user;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+public enum Role implements GrantedAuthority {
 
-@Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class Role implements GrantedAuthority {
-    @Id
-    private String authority;
+    ROLE_USER,
+    ROLE_ADMIN,
+    ROLE_USER_MANAGER;
+
+    @Override
+    public String getAuthority() {
+        return name();
+    }
 }
