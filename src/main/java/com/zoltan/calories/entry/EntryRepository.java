@@ -1,8 +1,5 @@
 package com.zoltan.calories.entry;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
@@ -14,9 +11,6 @@ import java.util.Optional;
 
 
 public interface EntryRepository extends JpaRepository<Entry, Long>, JpaSpecificationExecutor<Entry> {
-    @Query("select e from Entry e where e.user.username = ?#{ principal?.username }")
-    Page<Entry> getEntriesForCurrentUser(Specification<Entry> spec, Pageable pageable);
-
     @Query("select e from Entry e where e.id = :id and e.user.username = ?#{ principal?.username }")
     Optional<Entry> getEntryByIdForCurrentUser(Long id);
 

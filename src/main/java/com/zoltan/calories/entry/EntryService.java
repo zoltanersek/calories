@@ -92,7 +92,7 @@ public class EntryService {
 
     private boolean isDailyTotalHigherThanTargetForDate(LocalDate localDate) {
         int total = entryRepository.getTotalForDayForCurrentUser(localDate).orElse(0);
-        Optional<SettingDto> setting = settingService.getSetting(Settings.CALORIES_DAILY_TARGET);
+        Optional<SettingDto> setting = settingService.getSettingForUser(Settings.CALORIES_DAILY_TARGET);
 
         return setting.map(SettingDto::getValue)
                 .map(Integer::parseInt)

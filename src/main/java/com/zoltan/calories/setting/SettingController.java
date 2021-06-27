@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
@@ -24,18 +25,18 @@ public class SettingController {
     private final SettingService settingService;
 
     @GetMapping
-    public Page<SettingDto> getAllSettings(Pageable p) {
-        return settingService.getAllSettings(p);
+    public Page<SettingDto> getAllSettings(@RequestParam(value = "search", required = false) String search, Pageable p) {
+        return settingService.getAllSettingsForUser(search, p);
     }
 
     @GetMapping(path = "/{name}")
     public SettingDto getSetting(@PathVariable("name") @NotEmpty String name) {
-        return settingService.getSetting(name).orElseThrow(() -> new NotFoundException("Setting " + name + " not found for user"));
+        return settingService.getSettingForUser(name).orElseThrow(() -> new NotFoundException("Setting " + name + " not found for user"));
     }
 
     @PutMapping(path = "/{name}")
     public SettingDto updateSetting(@PathVariable("name") @NotEmpty String name, @RequestBody @Valid SettingDto settingDto) {
-        return settingService.updateSetting(name, settingDto);
+        return settingService.updateSettingForUser(name, settingDto);
     }
 
     @PostMapping
@@ -45,6 +46,6 @@ public class SettingController {
 
     @DeleteMapping(path = "/{name}")
     public void deleteSetting(@PathVariable("name") @NotEmpty String name) {
-        settingService.deleteSetting(name);
+        settingService.deleteSettingForUser(name);
     }
 }

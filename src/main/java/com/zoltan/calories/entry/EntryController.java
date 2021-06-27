@@ -27,7 +27,6 @@ public class EntryController {
 
     @GetMapping
     public Page<EntryDto> getAllEntries(@RequestParam(value = "search", required = false) String search, Pageable p) {
-        log.info("Got search {}", search);
         return entryService.getAllEntriesForCurrentUser(search, p);
     }
 

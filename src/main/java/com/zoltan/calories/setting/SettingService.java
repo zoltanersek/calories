@@ -1,12 +1,17 @@
 package com.zoltan.calories.setting;
 
 import com.zoltan.calories.NotFoundException;
+import com.zoltan.calories.entry.Entry;
+import com.zoltan.calories.entry.EntrySpecification;
+import com.zoltan.calories.search.SearchParser;
 import com.zoltan.calories.user.User;
 import com.zoltan.calories.user.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import javax.transaction.Transactional;
 import javax.validation.ValidationException;
@@ -18,9 +23,14 @@ public class SettingService {
     private final SettingRepository settingRepository;
     private final UserService userService;
     private final SettingMapper settingMapper;
+    private final SearchParser searchParser;
 
-    public Page<SettingDto> getAllSettings(Pageable pageable) {
-        return settingRepository.getSettingsForCurrentUser(pageable).map(settingMapper::toSettingDto);
+    public Page<SettingDto> getAllSettingsForUser(String search, Pageable pageable) {
+        Specification<Setting> specification = (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("user"), userService.getCurrentUser());
+        if (!ObjectUtils.isEmpty(search)) {
+            specification = specification.and(searchParser.parse(search, SettingSpecification::new));
+        }
+        return settingRepository.findAll(specification, pageable).map(settingMapper::toSettingDto);
     }
 
     public SettingDto createSetting(SettingDto settingDto) {
@@ -35,12 +45,12 @@ public class SettingService {
         return settingMapper.toSettingDto(settingRepository.save(setting));
     }
 
-    public Optional<SettingDto> getSetting(String name) {
+    public Optional<SettingDto> getSettingForUser(String name) {
         return settingRepository.getSettingByNameForCurrentUser(name).map(settingMapper::toSettingDto);
     }
 
     @Transactional
-    public SettingDto updateSetting(String name, SettingDto settingDto) {
+    public SettingDto updateSettingForUser(String name, SettingDto settingDto) {
         Optional<Setting> existingSettingOptional = settingRepository.getSettingByNameForCurrentUser(name);
         if (existingSettingOptional.isEmpty()) {
             throw new NotFoundException("Setting " + name + " not found for user");
@@ -53,7 +63,7 @@ public class SettingService {
         return settingMapper.toSettingDto(existingSetting);
     }
 
-    public void deleteSetting(String name) {
+    public void deleteSettingForUser(String name) {
         settingRepository.deleteByNameForCurrentUser(name);
     }
 }
