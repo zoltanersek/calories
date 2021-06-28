@@ -1,4 +1,4 @@
-package com.zoltan.calories.conf;
+package com.zoltan.calories.config;
 
 import com.zoltan.calories.user.UserRepository;
 import lombok.RequiredArgsConstructor;

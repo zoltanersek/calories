@@ -36,8 +36,7 @@ public class EntryService {
             specification = searchParser.parse(search, EntrySpecification::new);
         }
         return entryRepository.findAll(specification, pageable)
-                .map(entryMapper::toEntryDtoWithUserDto)
-                .map(entryDto -> entryDto.withUnderBudget(isDailyTotalHigherThanTargetForDate(entryDto.getDate())));
+                .map(entryMapper::toEntryDtoWithUserDto);
     }
 
     public Page<EntryDto> getAllEntriesForCurrentUser(String search, Pageable pageable) {
@@ -68,7 +67,7 @@ public class EntryService {
         }
         Entry existingEntry = existingEntryOptional.get();
         updateEntryFields(existingEntry, entryDto);
-        return entryMapper.toEntryDtoWithUserDto(existingEntry).withUnderBudget(isDailyTotalHigherThanTargetForDate(entryDto.getDate()));
+        return entryMapper.toEntryDtoWithUserDto(existingEntry);
     }
 
     @Transactional

@@ -1,10 +1,11 @@
-package com.zoltan.calories.conf;
+package com.zoltan.calories.config;
 
 import com.zoltan.calories.user.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -12,7 +13,8 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 @Component
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Log4j2
 public class JwtUtil {
 
@@ -43,7 +45,7 @@ public class JwtUtil {
                 .setSubject(String.format("%s %s", user.getId(), user.getUsername()))
                 .setIssuer(ISSUER)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 7 * 24 * 60 * 60 * 1000))
+                .setExpiration(new Date(System.currentTimeMillis() + 24 * 60 * 60 * 1000))
                 .signWith(SignatureAlgorithm.HS256, secret)
                 .compact();
     }

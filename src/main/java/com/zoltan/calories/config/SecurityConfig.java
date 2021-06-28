@@ -1,9 +1,8 @@
-package com.zoltan.calories.conf;
+package com.zoltan.calories.config;
 
 import com.zoltan.calories.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.hibernate.annotations.SelectBeforeUpdate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;

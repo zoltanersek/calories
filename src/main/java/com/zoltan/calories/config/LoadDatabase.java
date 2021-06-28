@@ -1,4 +1,4 @@
-package com.zoltan.calories.conf;
+package com.zoltan.calories.config;
 
 import com.zoltan.calories.entry.Entry;
 import com.zoltan.calories.entry.EntryRepository;
@@ -16,7 +16,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Collections;
 import java.util.Set;
 
 @Configuration

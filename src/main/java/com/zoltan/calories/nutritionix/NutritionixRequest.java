@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class NutrionoixRequest {
+public class NutritionixRequest {
     String query;
 }

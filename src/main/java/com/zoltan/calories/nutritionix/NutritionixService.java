@@ -20,7 +20,7 @@ public class NutritionixService {
 
     public Integer tryGetCaloriesForItem(String description) {
         try {
-            NutrionoixRequest request = new NutrionoixRequest(description);
+            NutritionixRequest request = new NutritionixRequest(description);
             ResponseEntity<NutritionixResponse> responseResponseEntity =
                     restTemplate.postForEntity("/natural/nutrients", request, NutritionixResponse.class);
             if (responseResponseEntity.getStatusCode() == HttpStatus.OK) {

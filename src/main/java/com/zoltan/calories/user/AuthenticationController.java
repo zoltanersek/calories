@@ -1,6 +1,6 @@
 package com.zoltan.calories.user;
 
-import com.zoltan.calories.conf.JwtUtil;
+import com.zoltan.calories.config.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpHeaders;

@@ -24,6 +24,7 @@ public class EntryDto {
     private LocalTime time;
     private String text;
     private Integer calories;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Boolean underBudget;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private UserDto user;
