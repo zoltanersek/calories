@@ -42,7 +42,7 @@ public class SearchParser {
         return specStack.pop();
     }
 
-    private Deque<?> parse(String search) {
+    Deque<?> parse(String search) {
         Deque<Object> output = new LinkedList<>();
         Deque<String> stack = new LinkedList<>();
 
@@ -74,7 +74,7 @@ public class SearchParser {
                 }
                 String operator = tokens.get(i + 1);
                 if (!BASIC_OPERATORS.contains(operator)) {
-                    throw new SearchParserException("invalid search " + search + " operator" + operator + " not found");
+                    throw new SearchParserException("invalid search " + search + " operator " + operator + " not found");
                 }
                 output.push(new BasicOperation(token, operator, tokens.get(i + 2)));
                 i = i + 2;
