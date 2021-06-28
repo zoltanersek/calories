@@ -68,14 +68,7 @@ public class UserService {
         if (!existingUser.getUsername().equals(userDto.getUsername())) {
             throw new ValidationException("Username change for user not supported");
         }
-        Set<Role> newAuthorities = new HashSet<>();
-        for (Role role : userDto.getAuthorities()) {
-            if (!List.of(Role.values()).contains(role)) {
-                throw new ValidationException("Role " + role + "not defined");
-            }
-            newAuthorities.add(role);
-        }
-        existingUser.setAuthorities(newAuthorities);
+        existingUser.setAuthorities(userDto.getAuthorities());
         existingUser.setEnabled(userDto.getEnabled());
         return userMapper.toUserDtoWithRoles(existingUser);
     }
