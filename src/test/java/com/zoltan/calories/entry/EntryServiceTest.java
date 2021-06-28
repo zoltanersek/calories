@@ -69,7 +69,6 @@ class EntryServiceTest {
         User user = new User(1L, "test", "test", Set.of(Role.ROLE_USER), true);
         Entry entry = new Entry(localDate, LocalTime.now(), "entry", 3100, user);
         entry.setId(1L);
-        SettingDto settingDto = SettingDto.builder().name(Settings.CALORIES_DAILY_TARGET).value("2500").build();
         given(entryRepository.findAll(any(Specification.class), any(Pageable.class))).willReturn(new PageImpl<>(List.of(entry)));
         given(searchParser.parse(eq("search"), ArgumentMatchers.<Function<BasicOperation, Specification<Entry>>>any()))
                 .willReturn(new EntrySpecification(new BasicOperation()));
@@ -79,7 +78,6 @@ class EntryServiceTest {
         assertThat(search.getContent().size()).isEqualTo(1);
         EntryDto foundEntry = search.getContent().get(0);
         assertThat(foundEntry).isEqualTo(entryMapper.toEntryDtoWithUserDto(entry));
-
     }
 
     @Test
