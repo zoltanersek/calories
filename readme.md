@@ -17,6 +17,8 @@ https://developer.nutritionix.com/
 
 ## Build
 
+The app requires a Java 11 installation
+
 You can build the application by running: 
 
 ```shell script
