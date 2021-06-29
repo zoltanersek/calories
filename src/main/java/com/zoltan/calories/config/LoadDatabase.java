@@ -30,13 +30,13 @@ public class LoadDatabase {
         return args -> {
             User user = new User("zoltan", passwordEncoder.encode("zoltan"),
                     Set.of(Role.ROLE_ADMIN, Role.ROLE_USER), true);
-            log.info("Preloading " + userRepository.save(user).getUsername());
+            log.info("Preloading user" + userRepository.save(user).getUsername());
 
             Entry entry = new Entry(LocalDate.now(), LocalTime.now(), "apple", 90, user);
-            log.info("Preloading " + entryRepository.save(entry).getId() + " for user zoltan");
+            log.info("Preloading entry " + entryRepository.save(entry).getText() + " for user zoltan");
 
             Setting setting = new Setting(Settings.CALORIES_DAILY_TARGET, "2500", user);
-            log.info("Preloading " + settingRepository.save(setting).getName() + " for user zoltan");
+            log.info("Preloading setting " + settingRepository.save(setting).getName() + " for user zoltan");
         };
     }
 }

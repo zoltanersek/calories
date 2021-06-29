@@ -19,7 +19,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.PositiveOrZero;
 
 @RestController
-@RequestMapping(path = "api/user/")
+@RequestMapping(path = "api/user")
 @RolesAllowed({"ROLE_ADMIN", "ROLE_USER_MANAGER"})
 @AllArgsConstructor
 public class UserManagementController {

@@ -28,6 +28,9 @@ public class SearchParser {
             if (!(mayBeOperand instanceof String)) {
                 specStack.push(converter.apply((BasicOperation) mayBeOperand));
             } else {
+                if (specStack.size() < 2) {
+                    throw new SearchParserException("Invalid search " + search);
+                }
                 Specification<U> operand1 = specStack.pop();
                 Specification<U> operand2 = specStack.pop();
                 if (mayBeOperand.equals(OP_AND)) {

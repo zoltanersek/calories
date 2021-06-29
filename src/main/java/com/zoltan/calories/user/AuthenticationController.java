@@ -1,5 +1,6 @@
 package com.zoltan.calories.user;
 
+import com.zoltan.calories.ErrorResponse;
 import com.zoltan.calories.config.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -29,7 +30,7 @@ public class AuthenticationController {
     private final UserService userService;
 
     @PostMapping("login")
-    public ResponseEntity<UserDto> login(@RequestBody @Valid AuthRequest authRequest) {
+    public ResponseEntity login(@RequestBody @Valid AuthRequest authRequest) {
         try {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
@@ -40,8 +41,8 @@ public class AuthenticationController {
                     .header(HttpHeaders.AUTHORIZATION, jwtUtil.generateToken(user))
                     .body(userMapper.toUserDto(user));
         } catch (BadCredentialsException ex) {
-            log.error(ex);
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            log.info(ex);
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ErrorResponse(ex.getMessage()));
         }
     }
 
