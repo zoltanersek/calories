@@ -9,7 +9,6 @@ import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.Optional;
 
-
 public interface EntryRepository extends JpaRepository<Entry, Long>, JpaSpecificationExecutor<Entry> {
     @Query("select e from Entry e where e.id = :id and e.user.username = ?#{ principal?.username }")
     Optional<Entry> getEntryByIdForCurrentUser(Long id);

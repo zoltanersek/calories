@@ -2,8 +2,6 @@ package com.zoltan.calories.user;
 
 import org.springframework.stereotype.Component;
 
-import java.util.stream.Collectors;
-
 @Component
 public class UserMapper {
 

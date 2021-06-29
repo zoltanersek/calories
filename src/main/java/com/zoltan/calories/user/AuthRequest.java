@@ -1,6 +1,5 @@
 package com.zoltan.calories.user;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

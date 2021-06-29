@@ -9,6 +9,7 @@ public class Operator {
     public static final String OP_GT = "gt";
     public static final String OP_LT = "lt";
     public static final List<String> BASIC_OPERATORS = List.of(OP_EQ, OP_NE, OP_GT, OP_LT);
+
     public static final String OP_GROUP_START = "(";
     public static final String OP_GROUP_END = ")";
     public static final String OP_AND = "and";

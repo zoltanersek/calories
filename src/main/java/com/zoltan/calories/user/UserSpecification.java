@@ -1,7 +1,6 @@
 package com.zoltan.calories.user;
 
 import com.zoltan.calories.search.BasicOperation;
-import com.zoltan.calories.setting.Setting;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.jpa.domain.Specification;
