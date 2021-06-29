@@ -46,8 +46,10 @@ public class User implements UserDetails {
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "role")
+    @Builder.Default
     private Set<Role> authorities = new HashSet<>();
 
+    @Builder.Default
     private boolean enabled = true;
 
     @Override

@@ -117,7 +117,7 @@ class EntryServiceTest {
         }).when(entryRepository).save(any());
 
         CreateEntryRequest createEntryRequest =
-                new CreateEntryRequest(LocalDate.now(), localTime, "entry", 200);
+                new CreateEntryRequest(localDate, localTime, "entry", 200);
         EntryDto entryDto = entryService.createEntry(createEntryRequest);
 
         ArgumentCaptor<Entry> entryArgumentCaptor = ArgumentCaptor.forClass(Entry.class);
@@ -148,7 +148,7 @@ class EntryServiceTest {
         }).when(entryRepository).save(any());
 
         CreateEntryRequest createEntryRequest =
-                new CreateEntryRequest(LocalDate.now(), localTime, "entry", null);
+                new CreateEntryRequest(localDate, localTime, "entry", null);
         EntryDto entryDto = entryService.createEntry(createEntryRequest);
 
         ArgumentCaptor<Entry> entryArgumentCaptor = ArgumentCaptor.forClass(Entry.class);
