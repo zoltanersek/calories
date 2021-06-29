@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 @SpringBootApplication
 public class CaloriesApplication {
 
-    //todo: style pmd cleanup, logging, error handling, e2e testing, swagger, readme
+    //todo: style pmd cleanup, logging, error handling, swagger, readme
     public static void main(String[] args) {
         SpringApplication.run(CaloriesApplication.class, args);
     }
