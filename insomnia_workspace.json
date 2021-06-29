@@ -1,7 +1,7 @@
 {
 	"_type": "export",
 	"__export_format": 3,
-	"__export_date": "2021-06-29T14:09:56.229Z",
+	"__export_date": "2021-06-29T14:13:15.516Z",
 	"__export_source": "insomnia.desktop.app:v6.3.2",
 	"resources": [
 		{
@@ -107,7 +107,7 @@
 			"authentication": {},
 			"body": {
 				"mimeType": "application/json",
-				"text": "{\n\t\"username\": \"bristena\",\n\t\"password\": \"bristena\"\n}"
+				"text": "{\n\t\"username\": \"zoltan\",\n\t\"password\": \"zoltan\"\n}"
 			},
 			"created": 1624559054123,
 			"description": "",
@@ -121,7 +121,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1624559106826,
 			"method": "POST",
-			"modified": 1624974790670,
+			"modified": 1624975967213,
 			"name": "Login",
 			"parameters": [],
 			"parentId": "wrk_b0d7426263a642f48b881e345d1c05f8",
