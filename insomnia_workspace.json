@@ -1,0 +1,941 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2021-06-29T14:09:56.229Z",
+	"__export_source": "insomnia.desktop.app:v6.3.2",
+	"resources": [
+		{
+			"_id": "wrk_b0d7426263a642f48b881e345d1c05f8",
+			"created": 1624559046479,
+			"description": "",
+			"modified": 1624559046479,
+			"name": "Calories",
+			"parentId": null,
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_68f90a58d9114f0e973dd629cb5882e0",
+			"color": null,
+			"created": 1624559046606,
+			"data": {
+				"url": "http://localhost:8080"
+			},
+			"isPrivate": false,
+			"metaSortKey": 1624559046606,
+			"modified": 1624559152353,
+			"name": "New Environment",
+			"parentId": "wrk_b0d7426263a642f48b881e345d1c05f8",
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_6d6297e69a8d474495e90e1af2007105",
+			"cookies": [],
+			"created": 1624559046608,
+			"modified": 1624559046608,
+			"name": "Default Jar",
+			"parentId": "wrk_b0d7426263a642f48b881e345d1c05f8",
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "fld_79bf21461be649dca152acd046c34e21",
+			"created": 1624559106776,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1624559106776,
+			"modified": 1624559106776,
+			"name": "Settings",
+			"parentId": "wrk_b0d7426263a642f48b881e345d1c05f8",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_ba648cdcd5d94d798f555f0cd72377a7",
+			"created": 1624640522466,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1624559106726,
+			"modified": 1624648538295,
+			"name": "Entries",
+			"parentId": "wrk_b0d7426263a642f48b881e345d1c05f8",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_8dff89da46974bf78691695978496b39",
+			"created": 1624648549907,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1624559106676,
+			"modified": 1624648570828,
+			"name": "Nutritionix",
+			"parentId": "wrk_b0d7426263a642f48b881e345d1c05f8",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_724477318f3e49a184f13320962d6fb9",
+			"created": 1624795649419,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1624559106701,
+			"modified": 1624795659633,
+			"name": "Entries Admin",
+			"parentId": "wrk_b0d7426263a642f48b881e345d1c05f8",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_7865f729f7fb406399ca2ab6a8d10385",
+			"created": 1624797755012,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1624559106751,
+			"modified": 1624797763324,
+			"name": "Settings Admin",
+			"parentId": "wrk_b0d7426263a642f48b881e345d1c05f8",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_983a5d0e23a24fe0a28de78a0f44dea7",
+			"created": 1624799454975,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1624559106626,
+			"modified": 1624799462243,
+			"name": "User Management",
+			"parentId": "wrk_b0d7426263a642f48b881e345d1c05f8",
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_61d7c0af9afa44758c3cdb150834a004",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"username\": \"bristena\",\n\t\"password\": \"bristena\"\n}"
+			},
+			"created": 1624559054123,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_b125ed0d38b842e39d737fc058cf0707",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1624559106826,
+			"method": "POST",
+			"modified": 1624974790670,
+			"name": "Login",
+			"parameters": [],
+			"parentId": "wrk_b0d7426263a642f48b881e345d1c05f8",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/api/login",
+			"_type": "request"
+		},
+		{
+			"_id": "req_c15570fa3c8c400ab8d31d5acbf5e146",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"username\": \"zoltan2\",\n\t\"password\": \"zoltan2\"\n}"
+			},
+			"created": 1624788296922,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_b125ed0d38b842e39d737fc058cf0707",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1624559106801,
+			"method": "POST",
+			"modified": 1624975749306,
+			"name": "Register",
+			"parameters": [],
+			"parentId": "wrk_b0d7426263a642f48b881e345d1c05f8",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/api/register",
+			"_type": "request"
+		},
+		{
+			"_id": "req_41d5fe503bb64c35a974a3ac365212df",
+			"authentication": {},
+			"body": {},
+			"created": 1624559119032,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_955d330383a4462999dfba24c30fafc1",
+					"name": "Authorization",
+					"value": "Bearer {% response 'header', 'req_61d7c0af9afa44758c3cdb150834a004', 'Authorization' %}"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1624559119032,
+			"method": "GET",
+			"modified": 1624971876088,
+			"name": "Get all my settings",
+			"parameters": [],
+			"parentId": "fld_79bf21461be649dca152acd046c34e21",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/api/setting",
+			"_type": "request"
+		},
+		{
+			"_id": "req_4b133034688f45f69e9dd6a38d70bdb8",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"name\": \"calories.daily.target\",\n\t\"value\": \"2000\"\n}"
+			},
+			"created": 1624559764489,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_955d330383a4462999dfba24c30fafc1",
+					"name": "Authorization",
+					"value": "Bearer {% response 'header', 'req_61d7c0af9afa44758c3cdb150834a004', 'Authorization' %}"
+				},
+				{
+					"id": "pair_2963ace03a024655886c751d468fe925",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1624559112929,
+			"method": "POST",
+			"modified": 1624972309531,
+			"name": "Add new setting",
+			"parameters": [],
+			"parentId": "fld_79bf21461be649dca152acd046c34e21",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/api/setting",
+			"_type": "request"
+		},
+		{
+			"_id": "req_1a86515e96d04df790d5821e9c51929e",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"name\": \"calories.daily.target\",\n\t\"value\": \"7600\"\n}"
+			},
+			"created": 1624560620615,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_955d330383a4462999dfba24c30fafc1",
+					"name": "Authorization",
+					"value": "Bearer {% response 'header', 'req_61d7c0af9afa44758c3cdb150834a004', 'Authorization' %}"
+				},
+				{
+					"id": "pair_2963ace03a024655886c751d468fe925",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1624559109877.5,
+			"method": "PUT",
+			"modified": 1624972337113,
+			"name": "Update setting",
+			"parameters": [],
+			"parentId": "fld_79bf21461be649dca152acd046c34e21",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/api/setting/calories.daily.target",
+			"_type": "request"
+		},
+		{
+			"_id": "req_4fd8862253104b66843e42df9dfe1fdc",
+			"authentication": {},
+			"body": {},
+			"created": 1624560871446,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_955d330383a4462999dfba24c30fafc1",
+					"name": "Authorization",
+					"value": "Bearer {% response 'header', 'req_61d7c0af9afa44758c3cdb150834a004', 'Authorization' %}"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1624559108351.75,
+			"method": "GET",
+			"modified": 1624972344321,
+			"name": "Get single setting",
+			"parameters": [],
+			"parentId": "fld_79bf21461be649dca152acd046c34e21",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/api/setting/calories.daily.target",
+			"_type": "request"
+		},
+		{
+			"_id": "req_9d74c6696bcc4fe8b8d5ad9ffaee5bc8",
+			"authentication": {},
+			"body": {},
+			"created": 1624560915129,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_955d330383a4462999dfba24c30fafc1",
+					"name": "Authorization",
+					"value": "Bearer {% response 'header', 'req_61d7c0af9afa44758c3cdb150834a004', 'Authorization' %}"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1624559108301.75,
+			"method": "DELETE",
+			"modified": 1624972350931,
+			"name": "Delete setting",
+			"parameters": [],
+			"parentId": "fld_79bf21461be649dca152acd046c34e21",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/api/setting/calories.daily.target",
+			"_type": "request"
+		},
+		{
+			"_id": "req_06dfffedd3ca49cb93436e222ff2ef82",
+			"authentication": {},
+			"body": {},
+			"created": 1624796884568,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_955d330383a4462999dfba24c30fafc1",
+					"name": "Authorization",
+					"value": "Bearer {% response 'header', 'req_61d7c0af9afa44758c3cdb150834a004', 'Authorization' %}"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1624559115980.5,
+			"method": "GET",
+			"modified": 1624972274941,
+			"name": "Get all my settings filtered",
+			"parameters": [],
+			"parentId": "fld_79bf21461be649dca152acd046c34e21",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/api/setting?search=name eq calories.daily.target",
+			"_type": "request"
+		},
+		{
+			"_id": "req_825e93ef086c453481d890362328df68",
+			"authentication": {},
+			"body": {},
+			"created": 1624640528651,
+			"description": "",
+			"headers": [
+				{
+					"disabled": false,
+					"id": "pair_955d330383a4462999dfba24c30fafc1",
+					"name": "Authorization",
+					"value": "Bearer {% response 'header', 'req_61d7c0af9afa44758c3cdb150834a004', 'Authorization' %}"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1624640943158,
+			"method": "GET",
+			"modified": 1624974803801,
+			"name": "Get all my entries",
+			"parameters": [],
+			"parentId": "fld_ba648cdcd5d94d798f555f0cd72377a7",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/api/entry",
+			"_type": "request"
+		},
+		{
+			"_id": "req_cc22d82b8ce64eb2b086393b7ea45407",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"date\": \"2021-06-25\",\n\t\"time\": \"20:10\",\n\t\"text\": \"pie\",\n\t\"calories\": 700\n}"
+			},
+			"created": 1624640953569,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_955d330383a4462999dfba24c30fafc1",
+					"name": "Authorization",
+					"value": "Bearer {% response 'header', 'req_61d7c0af9afa44758c3cdb150834a004', 'Authorization' %}"
+				},
+				{
+					"id": "pair_a6f2c84a77f24053823d8ebd8fbab7eb",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1624640943133,
+			"method": "POST",
+			"modified": 1624972820144,
+			"name": "Add new entry",
+			"parameters": [],
+			"parentId": "fld_ba648cdcd5d94d798f555f0cd72377a7",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/api/entry",
+			"_type": "request"
+		},
+		{
+			"_id": "req_3a08f2620e114468a59099dde7ba12f9",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"id\": 4,\n\t\"date\": \"2021-06-25\",\n\t\"time\": \"20:10\",\n\t\"text\": \"Sloppy Joe 2\",\n\t\"calories\": \"0\"\n}"
+			},
+			"created": 1624641108037,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_955d330383a4462999dfba24c30fafc1",
+					"name": "Authorization",
+					"value": "Bearer {% response 'header', 'req_61d7c0af9afa44758c3cdb150834a004', 'Authorization' %}"
+				},
+				{
+					"id": "pair_a6f2c84a77f24053823d8ebd8fbab7eb",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1624600031082.5,
+			"method": "PUT",
+			"modified": 1624972853567,
+			"name": "Update entry",
+			"parameters": [],
+			"parentId": "fld_ba648cdcd5d94d798f555f0cd72377a7",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/api/entry/4",
+			"_type": "request"
+		},
+		{
+			"_id": "req_063da7aeb5dc4a41857af6eb273c4c49",
+			"authentication": {},
+			"body": {},
+			"created": 1624641379732,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_955d330383a4462999dfba24c30fafc1",
+					"name": "Authorization",
+					"value": "Bearer {% response 'header', 'req_61d7c0af9afa44758c3cdb150834a004', 'Authorization' %}"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1624579575057.25,
+			"method": "DELETE",
+			"modified": 1624641461191,
+			"name": "Delete entry",
+			"parameters": [],
+			"parentId": "fld_ba648cdcd5d94d798f555f0cd72377a7",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/api/entry/4",
+			"_type": "request"
+		},
+		{
+			"_id": "req_a8452fce08c540529a48f8f0261c2a17",
+			"authentication": {},
+			"body": {},
+			"created": 1624789274632,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_955d330383a4462999dfba24c30fafc1",
+					"name": "Authorization",
+					"value": "Bearer {% response 'header', 'req_61d7c0af9afa44758c3cdb150834a004', 'Authorization' %}"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1624640943145.5,
+			"method": "GET",
+			"modified": 1624790769421,
+			"name": "Get all my entries filtered",
+			"parameters": [],
+			"parentId": "fld_ba648cdcd5d94d798f555f0cd72377a7",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/api/entry?search=(date eq 2021-06-25)  AND ((text eq 'big mac') OR (text eq pie))  AND (time eq '20:10')",
+			"_type": "request"
+		},
+		{
+			"_id": "req_b300e83a7bb24fcfa95c075465a302fd",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n \"query\":\"sloppy joe\"\n}"
+			},
+			"created": 1624648578207,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_67bdfe248ed44778b16d4052bf35a7a5",
+					"name": "x-app-id",
+					"value": "4ac826ab"
+				},
+				{
+					"id": "pair_1d830acddd2d48bfa65b909be9b1c1db",
+					"name": "x-app-key",
+					"value": "ad86357e8a9657b5d9283e0206ef29f2"
+				},
+				{
+					"id": "pair_ae095bc62bfe4f718ec64dfe18191aeb",
+					"name": "x-remote-user-id",
+					"value": "0"
+				},
+				{
+					"id": "pair_52959e3bd1964ed3829f7a5d44834a82",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1624648578207,
+			"method": "POST",
+			"modified": 1624648771923,
+			"name": "Get calories for item",
+			"parameters": [],
+			"parentId": "fld_8dff89da46974bf78691695978496b39",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "https://trackapi.nutritionix.com/v2/natural/nutrients",
+			"_type": "request"
+		},
+		{
+			"_id": "req_a857c6325e654732be1767dfce93c6a5",
+			"authentication": {},
+			"body": {},
+			"created": 1624795649423,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_955d330383a4462999dfba24c30fafc1",
+					"name": "Authorization",
+					"value": "Bearer {% response 'header', 'req_61d7c0af9afa44758c3cdb150834a004', 'Authorization' %}"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1624640943158,
+			"method": "GET",
+			"modified": 1624795891870,
+			"name": "Get all entries",
+			"parameters": [],
+			"parentId": "fld_724477318f3e49a184f13320962d6fb9",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/api/admin/entry",
+			"_type": "request"
+		},
+		{
+			"_id": "req_b87b4dcca4994604ba5ead65c183a7e3",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"id\": 5,\n\t\"date\": \"2021-06-25\",\n\t\"time\": \"20:10\",\n\t\"text\": \"Sloppy Joe\",\n\t\"calories\": \"700\"\n}"
+			},
+			"created": 1624795649430,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_955d330383a4462999dfba24c30fafc1",
+					"name": "Authorization",
+					"value": "Bearer {% response 'header', 'req_61d7c0af9afa44758c3cdb150834a004', 'Authorization' %}"
+				},
+				{
+					"id": "pair_a6f2c84a77f24053823d8ebd8fbab7eb",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1624600031082.5,
+			"method": "PUT",
+			"modified": 1624795956901,
+			"name": "Update entry",
+			"parameters": [],
+			"parentId": "fld_724477318f3e49a184f13320962d6fb9",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/api/admin/entry/5",
+			"_type": "request"
+		},
+		{
+			"_id": "req_f31f476a3ab14ea5a3017326c0b39589",
+			"authentication": {},
+			"body": {},
+			"created": 1624795649432,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_955d330383a4462999dfba24c30fafc1",
+					"name": "Authorization",
+					"value": "Bearer {% response 'header', 'req_61d7c0af9afa44758c3cdb150834a004', 'Authorization' %}"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1624579575057.25,
+			"method": "DELETE",
+			"modified": 1624796014301,
+			"name": "Delete entry",
+			"parameters": [],
+			"parentId": "fld_724477318f3e49a184f13320962d6fb9",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/api/admin/entry/5",
+			"_type": "request"
+		},
+		{
+			"_id": "req_39d020ff347d4c838b283e04f29f1681",
+			"authentication": {},
+			"body": {},
+			"created": 1624795649433,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_955d330383a4462999dfba24c30fafc1",
+					"name": "Authorization",
+					"value": "Bearer {% response 'header', 'req_61d7c0af9afa44758c3cdb150834a004', 'Authorization' %}"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1624640943145.5,
+			"method": "GET",
+			"modified": 1624795935645,
+			"name": "Get all entries filtered",
+			"parameters": [],
+			"parentId": "fld_724477318f3e49a184f13320962d6fb9",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/api/admin/entry?search=text eq pie",
+			"_type": "request"
+		},
+		{
+			"_id": "req_1b9aa1cf694b4c07babc4c469b95a34e",
+			"authentication": {},
+			"body": {},
+			"created": 1624797755014,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_955d330383a4462999dfba24c30fafc1",
+					"name": "Authorization",
+					"value": "Bearer {% response 'header', 'req_61d7c0af9afa44758c3cdb150834a004', 'Authorization' %}"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1624559119032,
+			"method": "GET",
+			"modified": 1624797894772,
+			"name": "Get all settings",
+			"parameters": [],
+			"parentId": "fld_7865f729f7fb406399ca2ab6a8d10385",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/api/admin/setting",
+			"_type": "request"
+		},
+		{
+			"_id": "req_e2d0589075b1435f8bc87cd9d4c0c268",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"name\": \"calories.daily.target\",\n\t\"value\": \"7600\"\n}"
+			},
+			"created": 1624797755018,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_955d330383a4462999dfba24c30fafc1",
+					"name": "Authorization",
+					"value": "Bearer {% response 'header', 'req_61d7c0af9afa44758c3cdb150834a004', 'Authorization' %}"
+				},
+				{
+					"id": "pair_2963ace03a024655886c751d468fe925",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1624559109877.5,
+			"method": "PUT",
+			"modified": 1624972395593,
+			"name": "Update setting",
+			"parameters": [],
+			"parentId": "fld_7865f729f7fb406399ca2ab6a8d10385",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/api/admin/setting/3",
+			"_type": "request"
+		},
+		{
+			"_id": "req_7ed271c1007e41e9bdb5e22318f26209",
+			"authentication": {},
+			"body": {},
+			"created": 1624797755021,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_955d330383a4462999dfba24c30fafc1",
+					"name": "Authorization",
+					"value": "Bearer {% response 'header', 'req_61d7c0af9afa44758c3cdb150834a004', 'Authorization' %}"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1624559108301.75,
+			"method": "DELETE",
+			"modified": 1624797984336,
+			"name": "Delete setting",
+			"parameters": [],
+			"parentId": "fld_7865f729f7fb406399ca2ab6a8d10385",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/api/admin/setting/5",
+			"_type": "request"
+		},
+		{
+			"_id": "req_1f231a5bb85f4f429ad6eb2507ed2b8d",
+			"authentication": {},
+			"body": {},
+			"created": 1624797755023,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_955d330383a4462999dfba24c30fafc1",
+					"name": "Authorization",
+					"value": "Bearer {% response 'header', 'req_61d7c0af9afa44758c3cdb150834a004', 'Authorization' %}"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1624559115980.5,
+			"method": "GET",
+			"modified": 1624972379545,
+			"name": "Get all settings filtered",
+			"parameters": [],
+			"parentId": "fld_7865f729f7fb406399ca2ab6a8d10385",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/api/admin/setting?search=name eq calories.daily.target",
+			"_type": "request"
+		},
+		{
+			"_id": "req_41e174ea74b64780807331ce36a45735",
+			"authentication": {},
+			"body": {},
+			"created": 1624799470063,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_955d330383a4462999dfba24c30fafc1",
+					"name": "Authorization",
+					"value": "Bearer {% response 'header', 'req_61d7c0af9afa44758c3cdb150834a004', 'Authorization' %}"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1624559106576,
+			"method": "GET",
+			"modified": 1624974403952,
+			"name": "Get all users",
+			"parameters": [],
+			"parentId": "fld_983a5d0e23a24fe0a28de78a0f44dea7",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/api/user/",
+			"_type": "request"
+		},
+		{
+			"_id": "req_13dc2e022d7d4b2f862d26ef083a3bec",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"id\": \"4\",\n\t\"username\": \"bristena\",\n\t\"authorities\": [\n\t\t\"ROLE_USER\", \"ROLE_USER_MANAGER\"\n\t],\n\t\"enabled\": true\n}"
+			},
+			"created": 1624800796979,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_955d330383a4462999dfba24c30fafc1",
+					"name": "Authorization",
+					"value": "Bearer {% response 'header', 'req_61d7c0af9afa44758c3cdb150834a004', 'Authorization' %}"
+				},
+				{
+					"id": "pair_c1035415d53b4dfaab12296e9462a6a0",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1622079499418,
+			"method": "PUT",
+			"modified": 1624973207633,
+			"name": "Update user",
+			"parameters": [],
+			"parentId": "fld_983a5d0e23a24fe0a28de78a0f44dea7",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/api/user/4",
+			"_type": "request"
+		},
+		{
+			"_id": "req_875842271b0f4ce1b1104465369011fa",
+			"authentication": {},
+			"body": {},
+			"created": 1624801683417,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_955d330383a4462999dfba24c30fafc1",
+					"name": "Authorization",
+					"value": "Bearer {% response 'header', 'req_61d7c0af9afa44758c3cdb150834a004', 'Authorization' %}"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1620839695839,
+			"method": "DELETE",
+			"modified": 1624801696943,
+			"name": "Delete user",
+			"parameters": [],
+			"parentId": "fld_983a5d0e23a24fe0a28de78a0f44dea7",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/api/user/5",
+			"_type": "request"
+		},
+		{
+			"_id": "req_3338ae1639134f19abae666d9f1720e3",
+			"authentication": {},
+			"body": {},
+			"created": 1624972908289,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_955d330383a4462999dfba24c30fafc1",
+					"name": "Authorization",
+					"value": "Bearer {% response 'header', 'req_61d7c0af9afa44758c3cdb150834a004', 'Authorization' %}"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1623319302997,
+			"method": "GET",
+			"modified": 1624972959767,
+			"name": "Get all users filtered",
+			"parameters": [],
+			"parentId": "fld_983a5d0e23a24fe0a28de78a0f44dea7",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ url  }}/api/user?search=username eq zoltan",
+			"_type": "request"
+		}
+	]
+}

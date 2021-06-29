@@ -30,7 +30,7 @@ public class LoadDatabase {
         return args -> {
             User user = new User("zoltan", passwordEncoder.encode("zoltan"),
                     Set.of(Role.ROLE_ADMIN, Role.ROLE_USER), true);
-            log.info("Preloading user" + userRepository.save(user).getUsername());
+            log.info("Preloading user " + userRepository.save(user).getUsername());
 
             Entry entry = new Entry(LocalDate.now(), LocalTime.now(), "apple", 90, user);
             log.info("Preloading entry " + entryRepository.save(entry).getText() + " for user zoltan");
