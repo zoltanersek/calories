@@ -162,12 +162,27 @@ class UserServiceTest {
     }
 
     @Test
-    void deleteUser() {
+    void test_deleteUser_idValid_userDeleted() {
         User user = new User(1L, "test", "test", Set.of(Role.ROLE_USER), true);
         given(userRepository.findById(eq(1L))).willReturn(Optional.of(user));
+        given(userRepository.getCurrentUser()).willReturn(new User(2L, "current", "current", Set.of(), true));
 
         userService.deleteUser(1L);
 
         verify(userRepository).delete(eq(user));
+    }
+
+    @Test
+    void test_deleteUser_currentUser_exceptionThrown() {
+        User user = new User(1L, "test", "test", Set.of(Role.ROLE_USER), true);
+        given(userRepository.findById(eq(1L))).willReturn(Optional.of(user));
+        given(userRepository.getCurrentUser()).willReturn(user);
+
+        try {
+            userService.deleteUser(1L);
+            fail("Expected ValidationException");
+        } catch (ValidationException ex) {
+            assertThat(ex.getMessage()).isEqualTo("Cannot delete current user");
+        }
     }
 }

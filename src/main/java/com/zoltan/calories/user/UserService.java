@@ -72,6 +72,10 @@ public class UserService {
     }
 
     public void deleteUser(Long id) {
+        User currentUser = getCurrentUser();
+        if (currentUser.getId().equals(id)) {
+            throw new ValidationException("Cannot delete current user");
+        }
         userRepository.findById(id).ifPresent(userRepository::delete);
     }
 }
